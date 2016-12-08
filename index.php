@@ -1,10 +1,5 @@
 <?php
 
-namespace LINE\Tests\LINEBot;
-
-use LINE\LINEBot;
-use LINE\LINEBot\Constant\MessageType;
-use LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -52,7 +47,7 @@ foreach ($events as $event) {
   }
 
 #  $bot->replyText($event->getReplyToken(), $event->getText());
-  $bot->replyText($event->getReplyToken(), new ImageMessageBuilder('https://hoshino1gen.herokuapp.com/sample.png', 'https://hoshino1gen.herokuapp.com/sample.png') );
+  $bot->replyText($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('./sample.png', './sample.png') );
 #  $bot->replyText($event->getReplyToken(), $test);
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
   syslog(LOG_EMERG, print_r($event->replyToken, true));
