@@ -18,8 +18,9 @@ try {
   error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-$response = $bot->pushMessage('<to>', $textMessageBuilder);
+#$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+#$response = $bot->pushMessage('<to>', $textMessageBuilder);
+#echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
@@ -30,9 +31,8 @@ foreach ($events as $event) {
     error_log('Non text message has come');
     continue;
   }
-  $bot->replyText($event->getReplyToken(), $event->getText());
-
-  echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+#  $bot->replyText($event->getReplyToken(), $event->getText());
+  $bot->replyText($event->getReplyToken(), "返信あり");
 
 }
 
