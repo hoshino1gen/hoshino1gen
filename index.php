@@ -22,9 +22,9 @@ try {
 #$response = $bot->pushMessage('<to>', $textMessageBuilder);
 #echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
-$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"https://hoshino1gen.herokuapp.com/sample.png","previewImageUrl"=>"https://hoshino1gen.herokuapp.com/sample.png"];
+#$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"https://hoshino1gen.herokuapp.com/sample.png","previewImageUrl"=>"https://hoshino1gen.herokuapp.com/sample.png"];
 
-$test = array("a","b","c","d","e");
+#$test = array("a","b","c","d","e");
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
@@ -36,8 +36,8 @@ foreach ($events as $event) {
     continue;
   }
 
-#  $bot->replyText($event->getReplyToken(), $event->getText());
-  $bot->replyText($event->getReplyToken(), $test);
+  $bot->replyText($event->getReplyToken(), $event->getText());
+#  $bot->replyText($event->getReplyToken(), $test);
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
 }
