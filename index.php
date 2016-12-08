@@ -5,6 +5,7 @@ use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
+use LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
 use \LINE\LINEBot\Constant\HTTPHeader;
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -62,8 +63,15 @@ foreach ($events as $event) {
 
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("よろぽん！");
-    $SendMessage->add($TextMessageBuilder);
-    $bot->replyMessage($event->getReplyToken(), $SendMessage);
+    $ImageMessageBuilder = new ImageMessageBuilder("./sample.png", "./sample.png");
+
+    if ( $event->getText() === 'h' ) {
+      $SendMessage->add($ImageMessageBuilder);
+    } else {
+      $SendMessage->add($TextMessageBuilder);
+    }
+
+      $bot->replyMessage($event->getReplyToken(), $SendMessage);
 
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
