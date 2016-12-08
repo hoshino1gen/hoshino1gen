@@ -22,6 +22,15 @@ try {
 #$response = $bot->pushMessage('<to>', $textMessageBuilder);
 #echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
+{
+    "type": "image",
+    "originalContentUrl": "https://example.com/original.jpg",
+    "previewImageUrl": "https://example.com/preview.jpg"
+}
+
+$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"画像URL","previewImageUrl"=>"サムネイル画像URL"];
+
+
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
@@ -32,7 +41,7 @@ foreach ($events as $event) {
     continue;
   }
 #  $bot->replyText($event->getReplyToken(), $event->getText());
-  $bot->replyText($event->getReplyToken(), "返信あり");
+  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
 }
 
