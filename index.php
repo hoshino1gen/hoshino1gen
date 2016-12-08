@@ -62,13 +62,15 @@ foreach ($events as $event) {
 
 
     $SendMessage = new MultiMessageBuilder();
-    $TextMessageBuilder = new TextMessageBuilder("よろぽん！");
-    $ImageMessageBuilder = new ImageMessageBuilder("./sample.png", "./sample.png");
+    $TextMessageBuilder = new TextMessageBuilder("5555！");
+    $TextMessageBuilder1 = new TextMessageBuilder("666！");
+    $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
 
     if ( $event->getText() === 'h' ) {
       $SendMessage->add($ImageMessageBuilder);
     } else {
       $SendMessage->add($TextMessageBuilder);
+      $SendMessage->add($TextMessageBuilder1);
     }
 
       $bot->replyMessage($event->getReplyToken(), $SendMessage);
