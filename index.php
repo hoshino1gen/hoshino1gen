@@ -24,7 +24,7 @@ try {
 
 #$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"https://hoshino1gen.herokuapp.com/sample.png","previewImageUrl"=>"https://hoshino1gen.herokuapp.com/sample.png"];
 
-#$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('こんにちわー');
 #{
 #    "type": "image",
 #    "originalContentUrl": "https://hoshino1gen.herokuapp.com/sample.png",
@@ -44,7 +44,7 @@ foreach ($events as $event) {
   }
 
 #  $bot->replyText($event->getReplyToken(), $event->getText());
-  $bot->replyText($event->getReplyToken(), "hello" );
+  $bot->replyText($event->getReplyToken(), $imageMessageBuilder );
 #  $bot->replyText($event->getReplyToken(), $test);
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
   syslog(LOG_EMERG, print_r($event->replyToken, true));
