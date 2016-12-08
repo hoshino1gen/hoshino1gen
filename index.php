@@ -36,6 +36,9 @@ try {
 
 #$test = array("a","b","c","d","e");
 
+
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('yoo!');
+    
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
@@ -47,8 +50,8 @@ foreach ($events as $event) {
   }
 
 #  $bot->replyText($event->getReplyToken(), $event->getText());
-  $bot->replyText($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('./sample.png', './sample.png') );
-#  $bot->replyText($event->getReplyToken(), $test);
+#  $bot->replyText($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('./sample.png', './sample.png') );
+  $bot->replyText($event->getReplyToken(), $textMessageBuilder);
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
