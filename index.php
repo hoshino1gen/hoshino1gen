@@ -51,7 +51,7 @@ foreach ($events as $event) {
 
 #  $bot->replyText($event->getReplyToken(), $event->getText());
 #  $bot->replyText($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('./sample.png', './sample.png') );
-  $bot->replyText($event->getReplyToken(), $textMessageBuilder->Text());
+  $bot->replyText($event->getReplyToken(), $textMessageBuilder->getText());
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
