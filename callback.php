@@ -5,7 +5,7 @@ $content = $json->result[0]->content;
 
 $header = array(
     'Content-Type: application/json; charser=UTF-8',
-    'X-Line-ChannelID:1490797696 ',  // Channel ID
+    'X-Line-ChannelID: 1490797696',  // Channel ID
     'X-Line-ChannelSecret: e6fb3e87be15eaf35b0b6d47eda99d20',  // ChannelID Secret
     'X-Line-Trusted-User-With-ACL: ',  // MID
 );
