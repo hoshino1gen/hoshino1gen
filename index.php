@@ -1,5 +1,12 @@
 <?php
 
+namespace LINE\Tests\LINEBot;
+
+use LINE\LINEBot;
+use LINE\LINEBot\Constant\MessageType;
+use LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
+
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
@@ -24,7 +31,8 @@ try {
 
 #$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"https://hoshino1gen.herokuapp.com/sample.png","previewImageUrl"=>"https://hoshino1gen.herokuapp.com/sample.png"];
 
-$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('こんにちわー');
+#$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('こんにちわー');
+#new ImageMessageBuilder('https://example.com/image.jpg', 'https://example.com/image_preview.jpg')
 #{
 #    "type": "image",
 #    "originalContentUrl": "https://hoshino1gen.herokuapp.com/sample.png",
@@ -44,7 +52,7 @@ foreach ($events as $event) {
   }
 
 #  $bot->replyText($event->getReplyToken(), $event->getText());
-  $bot->replyText($event->getReplyToken(), $imageMessageBuilder );
+  $bot->replyText($event->getReplyToken(), new ImageMessageBuilder('https://hoshino1gen.herokuapp.com/sample.png', 'https://hoshino1gen.herokuapp.com/sample.png') );
 #  $bot->replyText($event->getReplyToken(), $test);
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
   syslog(LOG_EMERG, print_r($event->replyToken, true));
