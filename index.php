@@ -63,7 +63,7 @@ foreach ($events as $event) {
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("よろぽん！");
     $SendMessage->add($TextMessageBuilder);
-    $Bot->replyMessage($event->getReplyToken(), $SendMessage);
+    $bot->replyMessage($event->getReplyToken(), $SendMessage);
 
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
