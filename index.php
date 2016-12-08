@@ -22,13 +22,7 @@ try {
 #$response = $bot->pushMessage('<to>', $textMessageBuilder);
 #echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
-{
-    "type": "image",
-    "originalContentUrl": "https://example.com/original.jpg",
-    "previewImageUrl": "https://example.com/preview.jpg"
-}
-
-$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"画像URL","previewImageUrl"=>"サムネイル画像URL"];
+$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"https://hoshino1gen.herokuapp.com/sample.png","previewImageUrl"=>"https://hoshino1gen.herokuapp.com/sample.png"];
 
 
 foreach ($events as $event) {
