@@ -40,15 +40,21 @@ try {
 #    "previewImageUrl": "https://hoshino1gen.herokuapp.com/sample.png"
 #};
 
+try {
 
-require_once(__DIR__ . '/config.php');
+  require_once(__DIR__ . '/config.php');
 
-$quiz = new MyApp\Quiz();
+  $quiz = new MyApp\Quiz();
 
-if (!$quiz->isFinished()) {
-  $data = $quiz->getCurrentQuiz();
-  shuffle($data['a']);
+  if (!$quiz->isFinished()) {
+    $data = $quiz->getCurrentQuiz();
+    shuffle($data['a']);
+  }
+
+} catch (Exception $e) {
+  error_log($e->getMessage());
 }
+
 #$data['a'] h($a);
 
 foreach ($events as $event) {
