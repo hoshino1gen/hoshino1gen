@@ -42,22 +42,38 @@ try {
 #    "previewImageUrl": "https://hoshino1gen.herokuapp.com/sample.png"
 #};
 
-/*
+$quizSet = [];
+
 try {
 
-  require_once(__DIR__ . '/config.php');
+//  require_once(__DIR__ . '/config.php');
+  require_once(__DIR__ . '/functions.php');
 
-  $quiz = new MyApp\Quiz();
+//  $quiz = new MyApp\Quiz();
 
-  if (!$quiz->isFinished()) {
-    $data = $quiz->getCurrentQuiz();
-    shuffle($data['a']);
-  }
+//  if (!$quiz->isFinished()) {
+//    $data = $quiz->getCurrentQuiz();
+//    shuffle($data['a']);
+//  }
+
+
+    quizSet[] = [
+      'q' => 'What is A?',
+      'a' => ['A0', 'A1', 'A2', 'A3']
+    ];
+    quizSet[] = [
+      'q' => 'What is B?',
+      'a' => ['B0', 'B1', 'B2', 'B3']
+    ];
+    quizSet[] = [
+      'q' => 'What is C?',
+      'a' => ['C0', 'C1', 'C2', 'C3']
+    ];
 
 } catch (Exception $e) {
   error_log($e->getMessage());
 }
-*/
+
 
 
 
@@ -79,7 +95,7 @@ foreach ($events as $event) {
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
 $dummy = 'ダミーデータ';
-error_log('errorlog_test '  . print_r($dummy) );
+error_log('初期処理:'  . print_r($quizSet, true) );
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
@@ -99,11 +115,12 @@ error_log('errorlog_test '  . print_r($dummy) );
 
     $bot->replyMessage($event->getReplyToken(), $SendMessage);
 
+/*
     syslog(LOG_EMERG, 'システムは使用不可');
     syslog(LOG_DEBUG, 'でバックレベルのログ');
     syslog(LOG_INFO, '情報レベルのログ');
     syslog(LOG_WARNING, '警告');
-
+*/
 
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
