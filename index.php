@@ -96,8 +96,10 @@ foreach ($events as $event) {
 #  $bot->replyText($event->getReplyToken(), $textMessageBuilder->getText());
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
+/*
 $dummy = 'dummydata';
 error_log('init:'  . print_r($dummy, true) );
+*/
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
