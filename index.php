@@ -40,6 +40,7 @@ try {
 #    "previewImageUrl": "https://hoshino1gen.herokuapp.com/sample.png"
 #};
 
+/*
 try {
 
   require_once(__DIR__ . '/config.php');
@@ -54,6 +55,7 @@ try {
 } catch (Exception $e) {
   error_log($e->getMessage());
 }
+*/
 
 #$data['a'] h($a);
 
@@ -76,7 +78,7 @@ foreach ($events as $event) {
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("5555！");
     $TextMessageBuilder1 = new TextMessageBuilder("666！");
-    $TextMessageBuilder2 = new TextMessageBuilder( h($data['q']) );
+#    $TextMessageBuilder2 = new TextMessageBuilder( h($data['q']) );
 
     $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
 
@@ -85,7 +87,7 @@ foreach ($events as $event) {
     } else {
       $SendMessage->add($TextMessageBuilder);
       $SendMessage->add($TextMessageBuilder1);
-      $SendMessage->add($TextMessageBuilder2);
+#      $SendMessage->add($TextMessageBuilder2);
     }
 
     $bot->replyMessage($event->getReplyToken(), $SendMessage);
