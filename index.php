@@ -101,7 +101,7 @@ error_log('init:'  . print_r($dummy, true) );
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
-    $TextMessageBuilder = new TextMessageBuilder("444！");
+    $TextMessageBuilder = new TextMessageBuilder("1444！");
     $TextMessageBuilder1 = new TextMessageBuilder("888！");
 #    $TextMessageBuilder2 = new TextMessageBuilder( h($data['q']) );
 
