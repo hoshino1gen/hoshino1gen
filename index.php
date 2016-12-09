@@ -78,9 +78,9 @@ foreach ($events as $event) {
 #  $bot->replyText($event->getReplyToken(), $textMessageBuilder->getText());
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
-$dummy = 'dummy';
-error_log('errorlog_test '  . var_dump($dummy) );
-syslog('syslog_test ' . var_dump($dummy) );
+$dummy = 'ダミーデータ';
+error_log('errorlog_test '  . print_r($dummy) );
+#syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("444！");
@@ -98,6 +98,12 @@ syslog('syslog_test ' . var_dump($dummy) );
     }
 
     $bot->replyMessage($event->getReplyToken(), $SendMessage);
+
+    syslog(LOG_EMERG, 'システムは使用不可');
+    syslog(LOG_DEBUG, 'でバックレベルのログ');
+    syslog(LOG_INFO, '情報レベルのログ');
+    syslog(LOG_WARNING, '警告');
+
 
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
