@@ -57,18 +57,20 @@ try {
 //  }
 
 
-    quizSet[] = [
+    $quizSet[] = [
       'q' => 'What is A?',
       'a' => ['A0', 'A1', 'A2', 'A3']
     ];
-    quizSet[] = [
+    $quizSet[] = [
       'q' => 'What is B?',
       'a' => ['B0', 'B1', 'B2', 'B3']
     ];
-    quizSet[] = [
+    $quizSet[] = [
       'q' => 'What is C?',
       'a' => ['C0', 'C1', 'C2', 'C3']
     ];
+
+    error_log('quiz:'  . print_r($quizSet, true) );
 
 } catch (Exception $e) {
   error_log($e->getMessage());
@@ -94,8 +96,8 @@ foreach ($events as $event) {
 #  $bot->replyText($event->getReplyToken(), $textMessageBuilder->getText());
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
-$dummy = 'ダミーデータ';
-error_log('初期処理:'  . print_r($quizSet, true) );
+$dummy = 'dummydata';
+error_log('init:'  . print_r($quizSet, true) );
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
