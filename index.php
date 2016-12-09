@@ -69,8 +69,8 @@ try {
       'q' => 'What is C?',
       'a' => ['C0', 'C1', 'C2', 'C3']
     ];
-
-    error_log('quiz:'  . print_r($quizSet, true) );
+#正解
+#    error_log('quiz:'  . print_r($quizSet, true) );
 
 } catch (Exception $e) {
   error_log($e->getMessage());
@@ -97,7 +97,7 @@ foreach ($events as $event) {
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
 $dummy = 'dummydata';
-error_log('init:'  . print_r($quizSet, true) );
+error_log('init:'  . print_r($dummy, true) );
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
@@ -124,7 +124,7 @@ error_log('init:'  . print_r($quizSet, true) );
     syslog(LOG_WARNING, '警告');
 */
 
-  syslog(LOG_EMERG, print_r($event->replyToken, true));
+#  syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
 
  ?>
