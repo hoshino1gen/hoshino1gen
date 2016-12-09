@@ -40,11 +40,17 @@ try {
 #    "previewImageUrl": "https://hoshino1gen.herokuapp.com/sample.png"
 #};
 
-#$test = array("a","b","c","d","e");
 
+require_once(__DIR__ . '/config.php');
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('yoo!');
-    
+$quiz = new MyApp\Quiz();
+
+if (!$quiz->isFinished()) {
+  $data = $quiz->getCurrentQuiz();
+  shuffle($data['a']);
+}
+#$data['a'] h($a);
+
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
@@ -64,6 +70,8 @@ foreach ($events as $event) {
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("5555！");
     $TextMessageBuilder1 = new TextMessageBuilder("666！");
+    $TextMessageBuilder2 = new TextMessageBuilder( h($data['q']) );
+
     $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
 
     if ( $event->getText() === 'h' ) {
@@ -71,9 +79,10 @@ foreach ($events as $event) {
     } else {
       $SendMessage->add($TextMessageBuilder);
       $SendMessage->add($TextMessageBuilder1);
+      $SendMessage->add($TextMessageBuilder2);
     }
 
-      $bot->replyMessage($event->getReplyToken(), $SendMessage);
+    $bot->replyMessage($event->getReplyToken(), $SendMessage);
 
   syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
