@@ -59,6 +59,8 @@ try {
 }
 */
 
+
+
 #$data['a'] h($a);
 
 foreach ($events as $event) {
@@ -76,10 +78,13 @@ foreach ($events as $event) {
 #  $bot->replyText($event->getReplyToken(), $textMessageBuilder->getText());
 #  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
 
+$dummy = 'dummy';
+error_log('errorlog_test '  . var_dump($dummy) );
+syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
-    $TextMessageBuilder = new TextMessageBuilder("5555！");
-    $TextMessageBuilder1 = new TextMessageBuilder("666！");
+    $TextMessageBuilder = new TextMessageBuilder("444！");
+    $TextMessageBuilder1 = new TextMessageBuilder("888！");
 #    $TextMessageBuilder2 = new TextMessageBuilder( h($data['q']) );
 
     $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
