@@ -90,7 +90,7 @@ foreach ($events as $event) {
 
     $SendMessage10 = new MultiMessageBuilder();
 
-
+/*
   if (date("H") >= 6 and date("H") <= 11) {
         $TextMessageBuilder9 = new TextMessageBuilder("おはようございます。");
   elseif (date("H") >= 12 and date("H") <= 17) { 
@@ -98,6 +98,7 @@ foreach ($events as $event) {
   } else {
         $TextMessageBuilder9 = new TextMessageBuilder("こんばんわ");
   }
+*/
 
 //      error_log('BEACON');
     error_log('type:'  . print_r( $event->getType(), true) );
@@ -111,16 +112,19 @@ foreach ($events as $event) {
       $TextMessageBuilder10 = new TextMessageBuilder("退勤を記録しました。 " . date( "Y年m月d日 H時i分" ) );
     }
 
-    $SendMessage10->add($TextMessageBuilder9);
+//    $SendMessage10->add($TextMessageBuilder9);
     $SendMessage10->add($TextMessageBuilder10);
 
-//    $bot->pushMessage( "" , $SendMessage10);
+//    $bot->pushMessage( "U" . "" , $SendMessage10);
 
   }
 
 
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
+
+    error_log('event event:'  . print_r( $event, true) );
+
     continue;
   }
 
