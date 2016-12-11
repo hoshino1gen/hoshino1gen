@@ -112,10 +112,10 @@ foreach ($events as $event) {
 
     $beaconEventType = $event->getBeaconEventType();      
     if ( $beaconEventType === 'enter' ) {
-      $TextMessageBuilder10 = new TextMessageBuilder( $textAisatsu . "\n出勤を記録しました。\n " . date( "m月d日 " . H + 9 . "時i分s秒" ) );
+      $TextMessageBuilder10 = new TextMessageBuilder( $textAisatsu . "\n「出勤」を記録しました。\n " . date( "m月d日 ") . date(H) + 9 . date("時i分s秒") ) );
 
     } else if ( $beaconEventType === 'leave' ) {
-      $TextMessageBuilder10 = new TextMessageBuilder($textAisatsu .  "\n退勤を記録しました。\n " . date( "m月d日 " . H + 9 . "時i分s秒" ) );
+      $TextMessageBuilder10 = new TextMessageBuilder($textAisatsu .  "\n「退勤」を記録しました。\n " . date( "m月d日 ") . date(H) + 9 . date("時i分s秒") ) );
     }
 
 //    $SendMessage10->add($TextMessageBuilder9);
@@ -124,7 +124,6 @@ foreach ($events as $event) {
     $bot->pushMessage( "U6215b5100ad5069afdce9f10ac988bd3" , $SendMessage10);
 
   }
-
 
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
