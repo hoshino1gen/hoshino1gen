@@ -28,61 +28,12 @@ try {
   error_log("parseEventRequest failed. InvalidEventRequestException => ".var_export($e, true));
 }
 
-#$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
-#$response = $bot->pushMessage('<to>', $textMessageBuilder);
-#echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-
-#$response_format_image = ['contentType'=>2,"toType"=>1,'originalContentUrl'=>"https://hoshino1gen.herokuapp.com/sample.png","previewImageUrl"=>"https://hoshino1gen.herokuapp.com/sample.png"];
-
-#$imageMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('こんにちわー');
-#new ImageMessageBuilder('https://example.com/image.jpg', 'https://example.com/image_preview.jpg')
-#{
-#    "type": "image",
-#    "originalContentUrl": "https://hoshino1gen.herokuapp.com/sample.png",
-#    "previewImageUrl": "https://hoshino1gen.herokuapp.com/sample.png"
-#};
-
-$quizSet = [];
 
 try {
-
-//  require_once(__DIR__ . '/config.php');
-
-/*
-  require_once(__DIR__ . '/functions.php');
-*/
-
-//  $quiz = new MyApp\Quiz();
-
-//  if (!$quiz->isFinished()) {
-//    $data = $quiz->getCurrentQuiz();
-//    shuffle($data['a']);
-//  }
-
-
-    $quizSet[] = [
-      'q' => 'What is A?',
-      'a' => ['A0', 'A1', 'A2', 'A3']
-    ];
-    $quizSet[] = [
-      'q' => 'What is B?',
-      'a' => ['B0', 'B1', 'B2', 'B3']
-    ];
-    $quizSet[] = [
-      'q' => 'What is C?',
-      'a' => ['C0', 'C1', 'C2', 'C3']
-    ];
-#正解
-#    error_log('quiz:'  . print_r($quizSet, true) );
 
 } catch (Exception $e) {
   error_log($e->getMessage());
 }
-
-
-
-
-#$data['a'] h($a);
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
@@ -93,17 +44,6 @@ foreach ($events as $event) {
     error_log('Non text message has come');
     continue;
   }
-
-#  $bot->replyText($event->getReplyToken(), $event->getText());
-#  $bot->replyText($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\ImageMessageBuilder('./sample.png', './sample.png') );
-#  $bot->replyText($event->getReplyToken(), $textMessageBuilder->getText());
-#  $bot->replyText($event->getReplyToken(), ["返信あり","試す"]);
-
-/*
-$dummy = 'dummydata';
-error_log('init:'  . print_r($dummy, true) );
-*/
-#syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("１行目！");
@@ -122,14 +62,6 @@ error_log('init:'  . print_r($dummy, true) );
 
     $bot->replyMessage($event->getReplyToken(), $SendMessage);
 
-/*
-    syslog(LOG_EMERG, 'システムは使用不可');
-    syslog(LOG_DEBUG, 'でバックレベルのログ');
-    syslog(LOG_INFO, '情報レベルのログ');
-    syslog(LOG_WARNING, '警告');
-*/
-
-#  syslog(LOG_EMERG, print_r($event->replyToken, true));
 }
 
  ?>
