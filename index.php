@@ -122,7 +122,7 @@ foreach ($events as $event) {
 //    $SendMessage10->add($TextMessageBuilder9);
     $SendMessage10->add($TextMessageBuilder10);
 
-//    $bot->pushMessage( "U" . "" , $SendMessage10);
+    $bot->pushMessage( "U6215b5100ad5069afdce9f10ac988bd3" , $SendMessage10);
 
   }
 
