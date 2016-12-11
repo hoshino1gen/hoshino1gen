@@ -86,10 +86,11 @@ try {
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+
     if (($event instanceof \LINE\LINEBot\Event\BeaconDetectionEvent)) {
       error_log('BEACON');
-      error_log('BEACON:'  . print_r( $event->getReplyToken(), true) );
-
+      error_log('BEACON:'  . print_r( $event->getType(), true) );
+      error_log('BEACON:'  . print_r( $event->getHwid(), true) );
     }
 
     error_log('Non message event has come');
