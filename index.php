@@ -86,8 +86,15 @@ try {
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-    if (($event instanceof \LINE\LINEBot\Event\BaseEvent)) {
+    if (($event instanceof \LINE\LINEBot\Event\BeaconDetectionEvent)) {
       error_log('BEACONイベント!!');
+
+      error_log('BEACON:'  . print_r( $event->getReplyToken(), true) );
+
+
+
+
+
     }
 
     error_log('Non message event has come');
