@@ -3,6 +3,8 @@
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 
+date_default_timezone_set('Asia/Tokyo');
+
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
@@ -112,10 +114,10 @@ foreach ($events as $event) {
 
     $beaconEventType = $event->getBeaconEventType();      
     if ( $beaconEventType === 'enter' ) {
-      $TextMessageBuilder10 = new TextMessageBuilder( $textAisatsu . "\n「出勤」を記録しました。\n " . date( "m月d日 ") . date(H) + 9 . date("時i分s秒")  );
+      $TextMessageBuilder10 = new TextMessageBuilder( $textAisatsu . "\n「出勤」を記録しました。\n " . date( "m月d日 H時i分s秒")  );
 
     } else if ( $beaconEventType === 'leave' ) {
-      $TextMessageBuilder10 = new TextMessageBuilder($textAisatsu .  "\n「退勤」を記録しました。\n " . date( "m月d日 ") . date(H) + 9 . date("時i分s秒")  );
+      $TextMessageBuilder10 = new TextMessageBuilder($textAisatsu .  "\n「退勤」を記録しました。\n " . date( "m月d日 H時i分s秒")  );
     }
 
 //    $SendMessage10->add($TextMessageBuilder9);
