@@ -85,17 +85,41 @@ try {
 #$data['a'] h($a);
 
 foreach ($events as $event) {
-  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
 
-    if (($event instanceof \LINE\LINEBot\Event\BeaconDetectionEvent)) {
-      error_log('BEACON');
-      error_log('type:'  . print_r( $event->getType(), true) );
-      error_log('beacon:'  . print_r( $event->getBeaconEventType() , true) );
+  if (($event instanceof \LINE\LINEBot\Event\BeaconDetectionEvent)) {
 
-      $beacon = $event->getBeaconEventType();      
-      error_log('beaconType:'  . print_r( $beacon["type"], true) );
+    $SendMessage10 = new MultiMessageBuilder();
+
+
+  if (date("H") >= 6 and date("H") <= 11) {
+        $TextMessageBuilder9 = new TextMessageBuilder("おはようございます。");
+  elseif (date("H") >= 12 and date("H") <= 17) { 
+        $TextMessageBuilder9 = new TextMessageBuilder("こんにちわ。");
+  } else {
+        $TextMessageBuilder9 = new TextMessageBuilder("こんばんわ");
+  }
+
+//      error_log('BEACON');
+    error_log('type:'  . print_r( $event->getType(), true) );
+    error_log('beacon:'  . print_r( $event->getBeaconEventType() , true) );
+
+    $beaconEventType = $event->getBeaconEventType();      
+    if ( $beaconEventType === 'enter' ) {
+      $TextMessageBuilder10 = new TextMessageBuilder("出勤を記録しました。 " . date( "Y年m月d日 H時i分" ) );
+
+    } else if ( $beaconEventType === 'leave' ) {
+      $TextMessageBuilder10 = new TextMessageBuilder("退勤を記録しました。 " . date( "Y年m月d日 H時i分" ) );
     }
 
+    $SendMessage10->add($TextMessageBuilder9);
+    $SendMessage10->add($TextMessageBuilder10);
+
+//    $bot->pushMessage( "" , $SendMessage10);
+
+  }
+
+
+  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
     continue;
   }
@@ -117,6 +141,19 @@ error_log('init:'  . print_r($dummy, true) );
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
+
+/*
+if (date("H") >= 6 and date("H") <= 11) : ?>
+  <!--6時～11時のメッセージ-->
+  "おはようございます。今日も一日頑張りましょう。"
+elseif (date("H") >= 12 and date("H") <= 17) : 
+  "こんにちは。今日は良い天気です。"
+else : 
+  "こんばんわ"
+*/
+
+
+
     $TextMessageBuilder = new TextMessageBuilder("おはようございます!" . "さん、今日も1日がんばりましょう。");
     $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
     $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
