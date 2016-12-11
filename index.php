@@ -86,9 +86,14 @@ try {
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+    if (($event instanceof \LINE\LINEBot\Event\BaseEvent)) {
+      error_log('BEACONイベント!!');
+    }
+
     error_log('Non message event has come');
     continue;
   }
+
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
     error_log('Non text message has come');
     continue;
