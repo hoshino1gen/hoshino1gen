@@ -99,11 +99,11 @@ foreach ($events as $event) {
 
 
   if (date("H") >= 6 and date("H") <= 11) {
-        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、おはようございます。");
-  elseif (date("H") >= 12 and date("H") <= 17) { 
-        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、こんにちわ。");
+        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、おはようございます!");
+  } elseif (date("H") >= 12 and date("H") <= 17) { 
+        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、こんにちわ!");
   } else {
-        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、こんばんわ");
+        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、こんばんわ!");
   }
 
 //      error_log('BEACON');
@@ -164,7 +164,7 @@ else :
 
 
 
-    $TextMessageBuilder = new TextMessageBuilder("こんにちわ-");
+    $TextMessageBuilder = new TextMessageBuilder("打刻受付中!");
 //    $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
 //    $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
