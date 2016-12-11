@@ -89,8 +89,11 @@ foreach ($events as $event) {
 
     if (($event instanceof \LINE\LINEBot\Event\BeaconDetectionEvent)) {
       error_log('BEACON');
-      error_log('BEACON:'  . print_r( $event->getType(), true) );
-      error_log('BEACON:'  . print_r( $event->getHwid(), true) );
+      error_log('type:'  . print_r( $event->getType(), true) );
+      error_log('beacon:'  . print_r( $event->getBeacon(), true) );
+
+$beacon = $event->getBeacon();      
+      error_log('heaconType:'  . print_r( $beacon->type, true) );
     }
 
     error_log('Non message event has come');
@@ -114,8 +117,8 @@ error_log('init:'  . print_r($dummy, true) );
 #syslog('syslog_test ' . var_dump($dummy) );
 
     $SendMessage = new MultiMessageBuilder();
-    $TextMessageBuilder = new TextMessageBuilder("１行目！");
-    $TextMessageBuilder1 = new TextMessageBuilder("２行目！");
+    $TextMessageBuilder = new TextMessageBuilder("おはようございます!" . "さん、今日も1日がんばりましょう。");
+    $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
     $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
     $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
