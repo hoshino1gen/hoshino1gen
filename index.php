@@ -165,7 +165,7 @@ else :
 
 
 
-    $TextMessageBuilder = new TextMessageBuilder("-");
+    $TextMessageBuilder = new TextMessageBuilder("はいはい、聞いてるぜ");
 //    $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
 //    $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
