@@ -118,6 +118,8 @@ foreach ($events as $event) {
 
     } else if ( $beaconEventType === 'leave' ) {
       $TextMessageBuilder10 = new TextMessageBuilder($textAisatsu .  "\n「退勤」を記録しました。\n " . date( "m月d日 H時i分s秒")  );
+    } else {
+      $TextMessageBuilder10 = new TextMessageBuilder($textAisatsu .  "\n「退勤」を記録しました。\n " . date( "m月d日 H時i分s秒")  );
     }
 
 //    $SendMessage10->add($TextMessageBuilder9);
@@ -165,7 +167,7 @@ else :
 
 
 
-    $TextMessageBuilder = new TextMessageBuilder("はいはい、起きてるぜ");
+    $TextMessageBuilder = new TextMessageBuilder("はいはい、起きてるぜー");
 //    $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
 //    $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
