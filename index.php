@@ -116,7 +116,7 @@ error_log('init:'  . print_r($dummy, true) );
     $SendMessage = new MultiMessageBuilder();
     $TextMessageBuilder = new TextMessageBuilder("１行目！");
     $TextMessageBuilder1 = new TextMessageBuilder("２行目！");
-#    $TextMessageBuilder2 = new TextMessageBuilder( h($data['q']) );
+    $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
     $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
 
@@ -125,7 +125,7 @@ error_log('init:'  . print_r($dummy, true) );
     } else {
       $SendMessage->add($TextMessageBuilder);
       $SendMessage->add($TextMessageBuilder1);
-#      $SendMessage->add($TextMessageBuilder2);
+      $SendMessage->add($TextMessageBuilder2);
     }
 
     $bot->replyMessage($event->getReplyToken(), $SendMessage);
