@@ -97,15 +97,14 @@ foreach ($events as $event) {
 
     $SendMessage10 = new MultiMessageBuilder();
 
-/*
+
   if (date("H") >= 6 and date("H") <= 11) {
-        $TextMessageBuilder9 = new TextMessageBuilder("おはようございます。");
+        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、おはようございます。");
   elseif (date("H") >= 12 and date("H") <= 17) { 
-        $TextMessageBuilder9 = new TextMessageBuilder("こんにちわ。");
+        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、こんにちわ。");
   } else {
-        $TextMessageBuilder9 = new TextMessageBuilder("こんばんわ");
+        $TextMessageBuilder9 = new TextMessageBuilder("げんさん、こんばんわ");
   }
-*/
 
 //      error_log('BEACON');
     error_log('type:'  . print_r( $event->getType(), true) );
@@ -113,13 +112,13 @@ foreach ($events as $event) {
 
     $beaconEventType = $event->getBeaconEventType();      
     if ( $beaconEventType === 'enter' ) {
-      $TextMessageBuilder10 = new TextMessageBuilder("出勤を記録しました。 " . date( "Y年m月d日 H時i分" ) );
+      $TextMessageBuilder10 = new TextMessageBuilder("出勤を記録しました。\n " . date( "m月d日 H時i分" ) );
 
     } else if ( $beaconEventType === 'leave' ) {
-      $TextMessageBuilder10 = new TextMessageBuilder("退勤を記録しました。 " . date( "Y年m月d日 H時i分" ) );
+      $TextMessageBuilder10 = new TextMessageBuilder("退勤を記録しました。\n " . date( "m月d日 H時i分" ) );
     }
 
-//    $SendMessage10->add($TextMessageBuilder9);
+    $SendMessage10->add($TextMessageBuilder9);
     $SendMessage10->add($TextMessageBuilder10);
 
     $bot->pushMessage( "U6215b5100ad5069afdce9f10ac988bd3" , $SendMessage10);
@@ -165,9 +164,9 @@ else :
 
 
 
-    $TextMessageBuilder = new TextMessageBuilder("おはようございます!" . "げんさん、今日も1日がんばりましょう。");
-    $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
-    $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
+    $TextMessageBuilder = new TextMessageBuilder("こんにちわ-");
+//    $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
+//    $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
     $ImageMessageBuilder = new ImageMessageBuilder("https://hoshino1gen.herokuapp.com/sample.png", "https://hoshino1gen.herokuapp.com/sample.png");
 
@@ -175,8 +174,8 @@ else :
       $SendMessage->add($ImageMessageBuilder);
     } else {
       $SendMessage->add($TextMessageBuilder);
-      $SendMessage->add($TextMessageBuilder1);
-      $SendMessage->add($TextMessageBuilder2);
+//      $SendMessage->add($TextMessageBuilder1);
+//      $SendMessage->add($TextMessageBuilder2);
     }
 
     $bot->replyMessage($event->getReplyToken(), $SendMessage);
