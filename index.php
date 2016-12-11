@@ -86,6 +86,13 @@ try {
 
 foreach ($events as $event) {
 
+    error_log('event event:'  . print_r( $event, true) );
+
+
+
+
+
+
   if (($event instanceof \LINE\LINEBot\Event\BeaconDetectionEvent)) {
 
     $SendMessage10 = new MultiMessageBuilder();
@@ -123,7 +130,7 @@ foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
 
-    error_log('event event:'  . print_r( $event, true) );
+//    error_log('event event:'  . print_r( $event, true) );
 
     continue;
   }
@@ -158,7 +165,7 @@ else :
 
 
 
-    $TextMessageBuilder = new TextMessageBuilder("おはようございます!" . "さん、今日も1日がんばりましょう。");
+    $TextMessageBuilder = new TextMessageBuilder("おはようございます!" . "げんさん、今日も1日がんばりましょう。");
     $TextMessageBuilder1 = new TextMessageBuilder("出勤を記録しました。");
     $TextMessageBuilder2 = new TextMessageBuilder( date( "Y年m月d日 H時i分" ) );
 
